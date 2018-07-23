@@ -122,10 +122,12 @@ class KVStoreDist : public KVStoreLocal {
   void RunServer(const Controller& controller) override {
     CHECK(!IsWorkerNode());
     if (IsServerNode()) {
+      std::cout<<"src->kvstore->kvstore_dist.h: line 125"<<std::endl;
+      std::cout<<"only server node should show this line"<<std::endl;
       server_ = new KVStoreDistServer();
       server_->set_controller(controller);
     }
-    std::cout<<"src kvstore kvstore_dist.h: line 128"<<std::endl;
+    std::cout<<"src->kvstore->kvstore_dist.h: line 128"<<std::endl;
     std::cout<<"TEST: start async is called"<<std::endl;
     ps::StartAsync(0, "mxnet_server\0");
     if (!ps::Postoffice::Get()->is_recovery()) {
