@@ -30,6 +30,8 @@ void Postoffice::InitEnvironment() {
 
 void Postoffice::Start(int customer_id, const char* argv0, const bool do_barrier) {
   start_mu_.lock();
+  std::cout<<"3rdparty->ps-lite->src->postoffice.cc: line 33"<<std::endl;
+  std::cout<<"TEST: "<<customer_id<<std::endl;
   if (init_stage_ == 0) {
     InitEnvironment();
     // init glog
@@ -38,7 +40,7 @@ void Postoffice::Start(int customer_id, const char* argv0, const bool do_barrier
     } else {
       dmlc::InitLogging("ps-lite\0");
     }
-
+  
     // init node info.
     for (int i = 0; i < num_workers_; ++i) {
       int id = WorkerRankToID(i);
@@ -77,7 +79,11 @@ void Postoffice::Start(int customer_id, const char* argv0, const bool do_barrier
   }
   start_mu_.unlock();
   // do a barrier here
-  if (do_barrier) Barrier(customer_id, kWorkerGroup + kServerGroup + kScheduler);
+  if (do_barrier){
+      std::cout<<"3rdparty->ps-lite->src->postoffice.cc: line 83"<<std::endl;
+      std::cout<<"TEST: This msg should only show on sch"<<std::endl;
+    Barrier(customer_id, kWorkerGroup + kServerGroup + kScheduler);
+  }
 }
 
 void Postoffice::Finalize(const int customer_id, const bool do_barrier) {
