@@ -50,6 +50,7 @@ class KVStoreDist : public KVStoreLocal {
       ps_worker_ = new ps::KVWorker<char>(0, new_customer_id);
       ps::StartAsync(new_customer_id, "mxnet\0");
       if (!ps::Postoffice::Get()->is_recovery()) {
+
         ps::Postoffice::Get()->Barrier(
           new_customer_id,
           ps::kWorkerGroup + ps::kServerGroup + ps::kScheduler);
@@ -124,7 +125,8 @@ class KVStoreDist : public KVStoreLocal {
       server_ = new KVStoreDistServer();
       server_->set_controller(controller);
     }
-
+    std::cout<<"src kvstore kvstore_dist.h: line 128"<<std::endl;
+    std::cout<<"TEST: start async is called"<<std::endl;
     ps::StartAsync(0, "mxnet_server\0");
     if (!ps::Postoffice::Get()->is_recovery()) {
       ps::Postoffice::Get()->Barrier(0,
