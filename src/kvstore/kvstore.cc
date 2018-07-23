@@ -77,6 +77,8 @@ KVStore* KVStore::Create(const char *type_name) {
     }
   }
   kv->type_ = tname;
+  std::cout<<"src->kvstore->kvstore.cc: line 80"<<std::endl;
+  std::cout<<"TEST: Check whether worker node goes to this line"<<std::endl;
   return kv;
 }
 
