@@ -774,6 +774,8 @@ int MXKVStoreCreate(const char *type,
   std::cout<<"src->c_api->c_api.cc: line 774"<<std::endl;
   std::cout<<"TEST: "<<*type<<std::endl;
   *out = KVStore::Create(type);
+  std::cout<<"src->c_api->c_api.cc: line 777"<<std::endl;
+  std::cout<<"TEST: does server node goes to line 778"<<std::endl;
   API_END();
 }
 
