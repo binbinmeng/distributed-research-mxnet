@@ -54,9 +54,11 @@ KVStore* KVStore::Create(const char *type_name) {
   if (has("dist")) {
 #if MXNET_USE_DIST_KVSTORE
     kv = new kvstore::KVStoreDist(use_device_comm);
+    std::cout<<"src->kvstore->kvstore.cc: line 57"<<std::endl;
+    std::cout<<"TEST: All the nodes shoud create a kv supposingly"<<kv<<std::endl;
     if (!has("_async") && kv->IsWorkerNode() && kv->get_rank() == 0) {
       // configure the server to be the sync mode
-      std::cout<<"src->kvstore->kvstore.cc: line 57"<<std::endl;
+      std::cout<<"src->kvstore->kvstore.cc: line 61"<<std::endl;
       std::cout<<"TEST: Sync Mode Server is created"<<std::endl;
       kv->SendCommandToServers(static_cast<int>(kvstore::CommandType::kSyncMode), "");
     }
