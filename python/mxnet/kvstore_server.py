@@ -88,6 +88,7 @@ def _init_kvstore_server_module():
     if is_worker.value == 0:
         kvstore = create('dist')
         server = KVStoreServer(kvstore)
+        print('server is configured and start to run')
         server.run()
         sys.exit()
 
