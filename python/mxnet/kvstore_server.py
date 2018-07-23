@@ -87,6 +87,7 @@ def _init_kvstore_server_module():
         print('TEST: scheduler node')
     if is_worker.value == 0:
         kvstore = create('dist')
+        print('kvstore is created and start to create server')
         server = KVStoreServer(kvstore)
         print('server is configured and start to run')
         server.run()
