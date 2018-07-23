@@ -131,6 +131,8 @@ class KVStoreDist : public KVStoreLocal {
     std::cout<<"TEST: start async is called"<<std::endl;
     ps::StartAsync(0, "mxnet_server\0");
     if (!ps::Postoffice::Get()->is_recovery()) {
+      std::cout<<"src->kvstore->kvstore_dist.h: line 134"<<std::endl;
+      std::cout<<"TEST: what is a recovery node"<<std::endl;  
       ps::Postoffice::Get()->Barrier(0,
         ps::kWorkerGroup + ps::kServerGroup + ps::kScheduler);
     }
