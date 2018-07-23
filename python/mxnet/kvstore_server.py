@@ -88,6 +88,7 @@ def _init_kvstore_server_module():
     if is_scheduler.value != 0:
         print('TEST: scheduler node')
     if is_worker.value == 0:
+        print('only scheduler and server should show this line')
         kvstore = create('dist')
         print('kvstore is created and start to create server')
         server = KVStoreServer(kvstore)
