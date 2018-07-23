@@ -68,6 +68,8 @@ def _create_sparse_kvstore(kvstore):
     if isinstance(kvstore, kvs.KVStore):
         kv = kvstore
     elif isinstance(kvstore, str):
+        print('python->mxnet->model.py: line 71')
+        print('IMPORTANT TEST: create kvstore is called')
         kv = kvs.create(kvstore)
     else:
         raise TypeError("Cannot create '%s' KVStore with row_sparse parameters. "
@@ -99,6 +101,8 @@ def _create_kvstore(kvstore, num_device, arg_params):
             kv = None
         else:
             kv = kvs.create(kvstore)
+            print('python->mxnet->model.py: line 71')
+            print('IMPORTANT TEST: create kvstore is called')
             if kvstore == 'local':
             # automatically select a proper local
                 max_size = max(np.prod(param.shape) for param in

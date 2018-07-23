@@ -147,6 +147,8 @@ def fit(args, network, data_loader, **kwargs):
     """
     # kvstore
     kv = mx.kvstore.create(args.kv_store)
+    print('example->image-classification->common->fit.py: line 149')
+    print('IMPORTANT TEST: create kvstore is called')
     if args.gc_type != 'none':
         kv.set_gradient_compression({'type': args.gc_type,
                                      'threshold': args.gc_threshold})
