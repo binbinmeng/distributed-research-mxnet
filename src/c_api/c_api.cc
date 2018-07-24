@@ -1069,6 +1069,8 @@ int MXKVStoreRunServer(KVStoreHandle handle,
                        MXKVStoreServerController controller,
                        void *controller_handle) {
   API_BEGIN();
+  std::cout<<"src->c_api->c_api.cc: line 1072"<<std::endl;
+  std::cout<<"MXKVStoreRunServer"<<std::endl;
   MXKVStoreServerController *controller_temp = controller;
   void *controller_handle_temp = controller_handle;
   auto ctrl = [controller_temp, controller_handle_temp](int head, const std::string& body) {

@@ -55,6 +55,8 @@ class KVStoreServer(object):
                     optimizer = pickle.loads(cmd_body)
                 except:
                     raise
+                print('python->mxnet->kvstore_server.py: line 58')
+                print('kvstore server call set_optimizer')
                 self.kvstore.set_optimizer(optimizer)
             else:
                 print("server %d, unknown command (%d, %s)" % (

@@ -615,6 +615,8 @@ class Module(BaseModule):
             if self._compression_params:
                 kvstore.set_gradient_compression(self._compression_params)
             if update_on_kvstore:
+                print('python->mxnet->module->module.py: line 618')
+                print('TEST: call set_optimizer')
                 kvstore.set_optimizer(self._optimizer)
             # copy initialized local parameters to kvstore
             _initialize_kvstore(kvstore=kvstore,
