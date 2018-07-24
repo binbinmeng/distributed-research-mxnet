@@ -155,7 +155,7 @@ def fit(args, network, data_loader, **kwargs):
 
     # logging
     head = '%(asctime)-15s Node[' + str(kv.rank) + '] %(message)s'
-    logging.basicConfig(level=logging.DEBUG, format=head)
+    logging.basicConfig(level=logging.INFO, format=head)
     logging.info('start with arguments %s', args)
     
     epoch_size = get_epoch_size(args, kv)
