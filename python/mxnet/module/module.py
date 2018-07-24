@@ -304,9 +304,6 @@ class Module(BaseModule):
                 initializer(name, arr)
 
         attrs = self._symbol.attr_dict()
-        print('python->mxnet->module->module.py: line 307')
-        print('TEST: ')
-        print(self._arg_params.items())
         #self._arg_params.items()
         '''
         [('fc2_weight', 

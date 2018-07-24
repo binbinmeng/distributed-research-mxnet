@@ -493,8 +493,8 @@ class BaseModule(object):
                          allow_missing=allow_missing, force_init=force_init)
         print('python->mxnet->module->base_module.py: line 494')
         print('TEST: optimizer is initializing')
-        print('TEST: optimizer parameters')
-        print(optimizer_params)
+        # optimizer_params
+        # {'lr_scheduler': <mxnet.lr_scheduler.MultiFactorScheduler object at 0x7f1a0341fa50>, 'multi_precision': True, 'learning_rate': 0.05, 'wd': 0.0001, 'momentum': 0.9}
         self.init_optimizer(kvstore=kvstore, optimizer=optimizer,
                             optimizer_params=optimizer_params)
 
