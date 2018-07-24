@@ -63,6 +63,8 @@ def get_mnist_iter(args, kv):
     return (train, val)
 
 if __name__ == '__main__':
+    print('example->image-classification->train_mnist.py: line 66')
+    print('TEST: train_mnist main function')
     # parse args
     parser = argparse.ArgumentParser(description="train mnist",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
