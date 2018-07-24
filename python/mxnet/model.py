@@ -159,7 +159,13 @@ def _update_params_on_kvstore(param_arrays, grad_arrays, kvstore, param_names):
         if grad_list[0] is None:
             continue
         name = param_names[index]
-        print('kvstore key name%s'%name)
+        # print('kvstore key name%s'%name)
+        # kvstore key: fc1_weight
+        # kvstore key: fc1_bias
+        # kvstore key: fc2_weight
+        # kvstore key: fc2_bias
+        # kvstore key: fc3_weight
+        # kvstore key: fc3_bias
         # push gradient, priority is negative index
         kvstore.push(name, grad_list, priority=-index)
         # pull back the weights
