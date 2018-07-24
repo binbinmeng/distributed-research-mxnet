@@ -488,7 +488,9 @@ class Module(BaseModule):
             optimizer in the case an optimizer is already installed.
         """
         assert self.binded and self.params_initialized
-
+        print('python->mxnet->module->module.py: line 491')
+        print('TEST: init_optimizer is called')
+        print('TEST: self.optimizer_initialized%s'%(self.optimizer_initialized))
         if self.optimizer_initialized and not force_init:
             self.logger.warning('optimizer already initialized, ignoring...')
             return
@@ -498,13 +500,17 @@ class Module(BaseModule):
 
         (kvstore, update_on_kvstore) = \
                 _create_kvstore(kvstore, len(self._context), self._arg_params)
-
+        print('python->mxnet->module->module.py: line 503')
+        print('TEST: kvstore is created')
+        print('TEST: update_on_kvstore%s'%(update_on_kvstore))
         batch_size = self._exec_group.batch_size
         if kvstore and 'dist' in kvstore.type and '_sync' in kvstore.type:
             batch_size *= kvstore.num_workers
         rescale_grad = 1.0/batch_size
-
+        
         if isinstance(optimizer, str):
+            print('python->mxnet->module->module.py: line 512')
+            print('TEST: args optimizer is string')
             idx2name = {}
             if update_on_kvstore:
                 idx2name.update(enumerate(self._exec_group.param_names))
