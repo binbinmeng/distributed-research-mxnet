@@ -145,13 +145,21 @@ Customer* Postoffice::GetCustomer(int app_id, int customer_id, int timeout) cons
 }
 
 void Postoffice::Barrier(int customer_id, int node_group) {
-  if (GetNodeIDs(node_group).size() <= 1) return;
+  std::cout<<"3rdparty->ps-lite->src->postoffice.cc: line 148"<<std::endl;
+  std::cout<<"TEST: Goes into Barrier"<<std::endl;
+  if (GetNodeIDs(node_group).size() <= 1){
+    std::cout<<"TEST: Node ID is less or equal than 1"<<std::endl;
+    return;
+  }
   auto role = van_->my_node().role;
   if (role == Node::SCHEDULER) {
+    std::cout<<"TEST: This is scheduler"<<std::endl;
     CHECK(node_group & kScheduler);
   } else if (role == Node::WORKER) {
+    std::cout<<"TEST: This is worker"<<std::endl;
     CHECK(node_group & kWorkerGroup);
   } else if (role == Node::SERVER) {
+    std::cout<<"TEST: This is server"<<std::endl;
     CHECK(node_group & kServerGroup);
   }
   std::cout<<"3rdparty->ps-lite->src->postoffice.cc: line 157"<<std::endl;
