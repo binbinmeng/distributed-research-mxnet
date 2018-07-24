@@ -486,13 +486,13 @@ class KVStore(object):
                 optim_str = py_str(pickle.dumps(optimizer, 0))
             except:
                 raise
+            cmd = _get_kvstore_server_command_type('kController')
             print('python->mxnet->kvstore.py: line 489')
             print('Only worker should show this line')
             print('cmd')
             print(cmd)
             print('optim_str')
             print(optim_str)
-            cmd = _get_kvstore_server_command_type('kController')
             self._send_command_to_servers(cmd, optim_str)
             if optimizer.multi_precision:
                 cmd = _get_kvstore_server_command_type('kSetMultiPrecision')
