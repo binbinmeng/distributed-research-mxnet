@@ -143,8 +143,6 @@ inline int SimpleApp::Request(int req_head, const std::string& req_body, int rec
   // send
   for (int r : Postoffice::Get()->GetNodeIDs(recv_id)) {
     msg.meta.recver = r;
-    std::cout<<"3rdparty->ps-lite->include->ps->simple_app.h: line 146"<<std::endl;
-    std::cout<<"Current Time: "<<std::chrono::system_clock::now()<<std::endl;
     Postoffice::Get()->van()->Send(msg);
   }
   return ts;
