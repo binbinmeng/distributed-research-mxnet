@@ -24,6 +24,7 @@ import pickle
 import logging
 from .base import _LIB, check_call
 from .kvstore import create
+from time import gmtime, strftime
 
 class KVStoreServer(object):
     """The key-value store server."""
@@ -56,6 +57,7 @@ class KVStoreServer(object):
                 except:
                     raise
                 print('python->mxnet->kvstore_server.py: line 58')
+                print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))
                 print('kvstore server call set_optimizer')
                 self.kvstore.set_optimizer(optimizer)
             else:

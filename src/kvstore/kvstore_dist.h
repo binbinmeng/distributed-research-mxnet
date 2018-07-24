@@ -101,6 +101,8 @@ class KVStoreDist : public KVStoreLocal {
   void SendCommandToServers(int cmd_id,
                             const std::string& cmd_body) override {
     CHECK_NOTNULL(ps_worker_);
+    std::cout<<"src->kvstore->kvstore_dist.h: line 104"<<std::endl;
+    std::cout<<"cmd_id"<<cmd_id<<std::endl;
     ps_worker_->Wait(ps_worker_->Request(cmd_id, cmd_body, ps::kServerGroup));
   }
 
