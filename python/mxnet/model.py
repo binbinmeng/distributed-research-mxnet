@@ -94,6 +94,8 @@ def _create_kvstore(kvstore, num_device, arg_params):
         kv = None
     elif isinstance(kvstore, kvs.KVStore):
         kv = kvstore
+        print('python->mxnet->model.py: line 97')
+        print('TEST: kvstore is already created')
     elif isinstance(kvstore, str):
         # create kvstore using the string type
         if num_device is 1 and 'dist' not in kvstore:
@@ -119,6 +121,8 @@ def _create_kvstore(kvstore, num_device, arg_params):
 
 def _initialize_kvstore(kvstore, param_arrays, arg_params, param_names, update_on_kvstore):
     """Initialize kvstore"""
+    print('python->mxnet->model.py: line 124')
+    print(param_arrays)
     for idx, param_on_devs in enumerate(param_arrays):
         name = param_names[idx]
         kvstore.init(name, arg_params[name])

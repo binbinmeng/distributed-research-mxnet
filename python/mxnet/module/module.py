@@ -538,7 +538,8 @@ class Module(BaseModule):
         self._kvstore = kvstore
         self._update_on_kvstore = update_on_kvstore
         self._updater = None
-
+        print('python->mxnet->module->module.py: line 541')
+        print('TEST: update_on_kvstore%s'%update_on_kvstore)
         if kvstore:
             if self._compression_params:
                 kvstore.set_gradient_compression(self._compression_params)
