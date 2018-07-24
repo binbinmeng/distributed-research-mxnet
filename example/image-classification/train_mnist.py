@@ -93,6 +93,7 @@ if __name__ == '__main__':
     from importlib import import_module
     net = import_module('symbols.'+args.network)
     sym = net.get_symbol(**vars(args))
-
+    print('example->image-classification->train_mnist.py: line 96')
+    print('TEST: before fit')
     # train
     fit.fit(args, sym, get_mnist_iter)

@@ -146,9 +146,9 @@ def fit(args, network, data_loader, **kwargs):
     data_loader : function that returns the train and val data iterators
     """
     # kvstore
-    kv = mx.kvstore.create(args.kv_store)
     print('example->image-classification->common->fit.py: line 149')
     print('IMPORTANT TEST: create kvstore is called')
+    kv = mx.kvstore.create(args.kv_store)
     if args.gc_type != 'none':
         kv.set_gradient_compression({'type': args.gc_type,
                                      'threshold': args.gc_threshold})
