@@ -666,7 +666,6 @@ class Module(BaseModule):
         self._params_dirty = True
         if self._update_on_kvstore:
             print('python->mxnet->module->module.py: line 668')
-            print(self._exec_group)
             _update_params_on_kvstore(self._exec_group.param_arrays,
                                       self._exec_group.grad_arrays,
                                       self._kvstore, self._exec_group.param_names)
