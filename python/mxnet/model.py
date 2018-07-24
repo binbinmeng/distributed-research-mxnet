@@ -164,9 +164,16 @@ def _update_params_on_kvstore(param_arrays, grad_arrays, kvstore, param_names):
         # kvstore key: fc3_weight
         # kvstore key: fc3_bias
         # push gradient, priority is negative index
+        print('python->mxnet->model.py: line 167')
+        print('grad_list')
+        print(grad_list)
         kvstore.push(name, grad_list, priority=-index)
         # pull back the weights
+        print('before pull arg_list')
+        print(arg_list)
         kvstore.pull(name, arg_list, priority=-index)
+        print('after pull arg_list')
+        print(arg_list)
 
 def _update_params(param_arrays, grad_arrays, updater, num_device,
                    kvstore=None, param_names=None):
