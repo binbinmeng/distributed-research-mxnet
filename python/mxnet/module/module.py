@@ -624,6 +624,8 @@ class Module(BaseModule):
                                 update_on_kvstore=update_on_kvstore)
 
         if not update_on_kvstore:
+            print('python->mxnet->module->module.py: line 627')
+            print('TEST: update_on_kvstore is false, call get_updater')
             self._updater = opt.get_updater(optimizer)
 
         self.optimizer_initialized = True

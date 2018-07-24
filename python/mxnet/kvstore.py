@@ -492,6 +492,8 @@ class KVStore(object):
                 cmd = _get_kvstore_server_command_type('kSetMultiPrecision')
                 self._send_command_to_servers(cmd, '')
         else:
+            print('python->mxnet->kvstore.py: line 495')
+            print('Only server and scheduler should show this line')
             self._set_updater(opt.get_updater(optimizer))
 
     @property
