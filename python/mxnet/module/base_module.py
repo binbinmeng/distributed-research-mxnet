@@ -493,6 +493,8 @@ class BaseModule(object):
                          allow_missing=allow_missing, force_init=force_init)
         print('python->mxnet->module->base_module.py: line 494')
         print('TEST: optimizer is initializing')
+        print('TEST: optimizer parameters')
+        print(optimizer_params)
         self.init_optimizer(kvstore=kvstore, optimizer=optimizer,
                             optimizer_params=optimizer_params)
 
