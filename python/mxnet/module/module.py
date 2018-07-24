@@ -304,6 +304,9 @@ class Module(BaseModule):
                 initializer(name, arr)
 
         attrs = self._symbol.attr_dict()
+        print('python->mxnet->module->module.py: line 307')
+        print('TEST: ')
+        print(attrs)
         for name, arr in sorted(self._arg_params.items()):
             desc = InitDesc(name, attrs.get(name, None))
             _impl(desc, arr, arg_params)
