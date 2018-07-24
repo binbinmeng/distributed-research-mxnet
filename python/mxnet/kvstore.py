@@ -666,7 +666,7 @@ def create(name='local'):
         The created KVStore.
     """
     print('python->mxnet->kvstore.py: line 668')
-    print('TEST%s'%name)
+    print('TEST: %s'%name)
     if not isinstance(name, string_types):
         raise TypeError('name must be a string')
     handle = KVStoreHandle()

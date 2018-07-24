@@ -275,11 +275,15 @@ def _train_multi_device(symbol, ctx, arg_names, param_names, aux_names,
     executor_manager.set_params(arg_params, aux_params)
 
     if not update_on_kvstore:
+        print('python->mxnet->model.py: line 278')
+        print('TEST: update_on_kvstore is false')
         updater = get_updater(optimizer)
     else:
         kvstore.set_optimizer(optimizer)
 
     if kvstore:
+        print('python->mxnet->model.py: line 285')
+        print('TEST: kvstore is not null')
         _initialize_kvstore(kvstore=kvstore,
                             param_arrays=executor_manager.param_arrays,
                             arg_params=arg_params,
@@ -840,7 +844,8 @@ class FeedForward(BASE_ESTIMATOR):
         - 'dist_sync', multiple machines communicating via BSP.
         - 'dist_async', multiple machines with asynchronous communication.
         """
-
+        print('python->mxnet->model.py: line 843')
+        print('TEST: model.fit in successfull in fit.py')
         data = self._init_iter(X, y, is_train=True)
         eval_data = self._init_eval_iter(eval_data)
 
@@ -855,13 +860,21 @@ class FeedForward(BASE_ESTIMATOR):
         # setup metric
         if not isinstance(eval_metric, metric.EvalMetric):
             eval_metric = metric.create(eval_metric)
-
+        print('python->mxnet->model.py: line 859')
+        print('TEST: arg_params')
+        print(self.arg_params)
+        print('TEST: ctx')
+        print(self.ctx)
         # create kvstore
         (kvstore, update_on_kvstore) = _create_kvstore(
             kvstore, len(self.ctx), self.arg_params)
-
+        print('python->mxnet->model.py: line 867')
+        print('TEST: ')   
+        print(kvstore)    
         param_idx2name = {}
         if update_on_kvstore:
+            print('python->mxnet->model.py: line 872')
+            print('TEST: update_on_kvstore is true')           
             param_idx2name.update(enumerate(param_names))
         else:
             for i, n in enumerate(param_names):
@@ -874,12 +887,16 @@ class FeedForward(BASE_ESTIMATOR):
             batch_size = data.batch_size
             if kvstore and 'dist' in kvstore.type and '_async' not in kvstore.type:
                 batch_size *= kvstore.num_workers
+            print('python->mxnet->model.py: line 886')
+            print('TEST: optimizer will be created')           
             optimizer = opt.create(self.optimizer,
                                    rescale_grad=(1.0/batch_size),
                                    **(self.kwargs))
         elif isinstance(self.optimizer, opt.Optimizer):
             optimizer = self.optimizer
 
+        print('python->mxnet->model.py: line 894')
+        print('TEST: _train_multi_device is called')           
         # do training
         _train_multi_device(self.symbol, self.ctx, arg_names, param_names, aux_names,
                             self.arg_params, self.aux_params,
