@@ -97,3 +97,5 @@ def _init_kvstore_server_module():
         sys.exit()
 
 _init_kvstore_server_module()
+print('python->mxnet->kvstore_server.py: line 100')
+print('TEST: only workers will show this line')
