@@ -306,7 +306,9 @@ class Module(BaseModule):
         attrs = self._symbol.attr_dict()
         print('python->mxnet->module->module.py: line 307')
         print('TEST: ')
-        print(attrs)
+        print(self._arg_params.items())
+        #attrs
+        #{'fc1': {'num_hidden': '128'}, 'fc2': {'num_hidden': '64'}, 'fc3': {'num_hidden': '10'}, 'fc2_weight': {'num_hidden': '64'}, 'fc1_weight': {'num_hidden': '128'}, 'relu2': {'act_type': 'relu'}, 'relu1': {'act_type': 'relu'}, 'fc3_bias': {'num_hidden': '10'}, 'fc3_weight': {'num_hidden': '10'}, 'fc2_bias': {'num_hidden': '64'}, 'fc1_bias': {'num_hidden': '128'}}
         for name, arr in sorted(self._arg_params.items()):
             desc = InitDesc(name, attrs.get(name, None))
             _impl(desc, arr, arg_params)
@@ -668,7 +670,6 @@ class Module(BaseModule):
 
         self._params_dirty = True
         if self._update_on_kvstore:
-            print('python->mxnet->module->module.py: line 668')
             _update_params_on_kvstore(self._exec_group.param_arrays,
                                       self._exec_group.grad_arrays,
                                       self._kvstore, self._exec_group.param_names)
