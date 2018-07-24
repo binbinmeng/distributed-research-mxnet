@@ -136,6 +136,8 @@ class KVStoreDist : public KVStoreLocal {
       ps::Postoffice::Get()->Barrier(0,
         ps::kWorkerGroup + ps::kServerGroup + ps::kScheduler);
     }
+    std::cout<<"src->kvstore->kvstore_dist.h: line 139"<<std::endl;
+    std::cout<<"TEST: server start to run"<<std::endl;    
     if (server_) server_->Run();
     ps::Finalize(0, true);
     if (server_) {

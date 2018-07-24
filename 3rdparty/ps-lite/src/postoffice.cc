@@ -154,7 +154,8 @@ void Postoffice::Barrier(int customer_id, int node_group) {
   } else if (role == Node::SERVER) {
     CHECK(node_group & kServerGroup);
   }
-
+  std::cout<<"3rdparty->ps-lite->src->postoffice.cc: line 157"<<std::endl;
+  std::cout<<"TEST: Barrier is called"<<std::endl;
   std::unique_lock<std::mutex> ulk(barrier_mu_);
   barrier_done_[0][customer_id] = false;
   Message req;
