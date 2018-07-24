@@ -156,14 +156,14 @@ def fit(args, network, data_loader, **kwargs):
     # logging
     head = '%(asctime)-15s Node[' + str(kv.rank) + '] %(message)s'
     logging.basicConfig(level=logging.INFO, format=head)
-    logging.debug('start with arguments %s', args)
+    #logging.debug('start with arguments %s', args)
     
     epoch_size = get_epoch_size(args, kv)
 
     # data iterators
     (train, val) = data_loader(args, kv)
     if 'dist' in args.kv_store and not 'async' in args.kv_store:
-        logging.debug('Resizing training data to %d batches per machine', epoch_size)
+        #logging.debug('Resizing training data to %d batches per machine', epoch_size)
         # resize train iter to ensure each machine has same number of batches per epoch
         # if not, dist_sync can hang at the end with one machine waiting for other machines
         train = mx.io.ResizeIter(train, epoch_size)
