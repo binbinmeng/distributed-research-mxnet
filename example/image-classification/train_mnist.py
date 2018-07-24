@@ -27,18 +27,21 @@ from common.util import download_file
 import mxnet as mx
 import numpy as np
 import gzip, struct
+import warnings
 
 def read_data(label, image):
     """
     download and read data into numpy
     """
     base_url = 'http://yann.lecun.com/exdb/mnist/'
-    with gzip.open(download_file(base_url+label, os.path.join('data',label))) as flbl:
-        magic, num = struct.unpack(">II", flbl.read(8))
-        label = np.fromstring(flbl.read(), dtype=np.int8)
-    with gzip.open(download_file(base_url+image, os.path.join('data',image)), 'rb') as fimg:
-        magic, num, rows, cols = struct.unpack(">IIII", fimg.read(16))
-        image = np.fromstring(fimg.read(), dtype=np.uint8).reshape(len(label), rows, cols)
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        with gzip.open(download_file(base_url+label, os.path.join('data',label))) as flbl:
+            magic, num = struct.unpack(">II", flbl.read(8))
+            label = np.fromstring(flbl.read(), dtype=np.int8)
+        with gzip.open(download_file(base_url+image, os.path.join('data',image)), 'rb') as fimg:
+            magic, num, rows, cols = struct.unpack(">IIII", fimg.read(16))
+            image = np.fromstring(fimg.read(), dtype=np.uint8).reshape(len(label), rows, cols)
     return (label, image)
 
 
