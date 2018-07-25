@@ -198,6 +198,8 @@ class KVStoreDistServer {
       exec_.Stop();
     } else if (recved_type == CommandType::kSyncMode) {
       sync_mode_ = true;
+      std::cout<<"src->kvstore->kvstore_dist_server.h: line 201"<<std::endl;
+      std::cout<<"TEST: sync mode is set"<<std::endl;
     } else if (recved_type == CommandType::kSetGradientCompression) {
       gradient_compression_->DecodeParams(recved.body);
     } else if (recved_type == CommandType::kSetMultiPrecision) {

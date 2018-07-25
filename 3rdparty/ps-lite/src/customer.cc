@@ -11,6 +11,8 @@ const int Meta::kEmpty = std::numeric_limits<int>::max();
 Customer::Customer(int app_id, int customer_id, const Customer::RecvHandle& recv_handle)
     : app_id_(app_id), customer_id_(customer_id), recv_handle_(recv_handle) {
   Postoffice::Get()->AddCustomer(this);
+  std::cout<<"3rdparty->ps-lite->src->customer.cc: line 14"<<std::endl;
+  std::cout<<"TEST: Add Customer is called, check if all the nodes call this"<<std::endl;
   recv_thread_ = std::unique_ptr<std::thread>(new std::thread(&Customer::Receiving, this));
 }
 
