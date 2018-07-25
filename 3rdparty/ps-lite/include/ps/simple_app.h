@@ -175,7 +175,7 @@ inline void SimpleApp::Process(const Message& msg) {
   recv.timestamp = msg.meta.timestamp;
   recv.customer_id = msg.meta.customer_id;
   std::cout<<"3rdparty->ps-lite->include->ps->simple_app.h: line 77"<<std::endl;
-  std:cout<<"TEST: msg.meta.request "<<msg.meta.request<<std::endl;
+  std::cout<<"TEST: msg.meta.request "<<msg.meta.request<<std::endl;
   if (msg.meta.request) {
     CHECK(request_handle_);
     request_handle_(recv, this);
