@@ -145,6 +145,8 @@ inline int SimpleApp::Request(int req_head, const std::string& req_body, int rec
     msg.meta.recver = r;
     Postoffice::Get()->van()->Send(msg);
   }
+  std::cout<<"3rdparty->ps-lite->include->ps->simple_app.h: line 148"<<std::endl;
+  std::cout<<"TEST: rs="<<rs<<std::endl;
   return ts;
 }
 

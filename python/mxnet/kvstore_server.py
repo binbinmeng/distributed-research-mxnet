@@ -58,7 +58,7 @@ class KVStoreServer(object):
                     raise
                 print('python->mxnet->kvstore_server.py: line 58')
                 print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))
-                print('kvstore server call set_optimizer')
+                print('TEST: kvstore server call set_optimizer')
                 self.kvstore.set_optimizer(optimizer)
             else:
                 print("server %d, unknown command (%d, %s)" % (
