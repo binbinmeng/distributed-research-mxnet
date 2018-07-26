@@ -126,6 +126,8 @@ class KVStoreDist : public KVStoreLocal {
     if (IsServerNode()) {
       std::cout<<"src->kvstore->kvstore_dist.h: line 125"<<std::endl;
       std::cout<<"only server node should show this line"<<std::endl;
+      // Icy notes
+      // KVStoreDistServer is created and Server customer is added inside the constructor
       server_ = new KVStoreDistServer();
       server_->set_controller(controller);
     }

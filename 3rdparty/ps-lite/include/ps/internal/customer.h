@@ -100,11 +100,16 @@ class Customer {
   int customer_id_;
 
   RecvHandle recv_handle_;
+  //Icy notes
+  // recv_queue: a message queue, message is pushed into the queue and poped in customer.cc (Customer::Receiving())
   ThreadsafeQueue<Message> recv_queue_;
   std::unique_ptr<std::thread> recv_thread_;
 
   std::mutex tracker_mu_;
   std::condition_variable tracker_cond_;
+  //Icy notes
+  //tracker_: first->expected reponse No, second->current response No
+  //check Customer::NewRequest(int recver) for reference
   std::vector<std::pair<int, int>> tracker_;
 
   DISALLOW_COPY_AND_ASSIGN(Customer);

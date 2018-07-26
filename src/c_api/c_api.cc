@@ -1076,6 +1076,8 @@ int MXKVStoreRunServer(KVStoreHandle handle,
   auto ctrl = [controller_temp, controller_handle_temp](int head, const std::string& body) {
       controller_temp(head, body.c_str(), controller_handle_temp);
   };
+  // Icy notes
+  // KVStoreServer is created in RunServer
   static_cast<KVStore*>(handle)->RunServer(ctrl);
   API_END();
 }

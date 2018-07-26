@@ -70,6 +70,9 @@ class KVWorker : public SimpleApp {
    */
   explicit KVWorker(int app_id, int customer_id) : SimpleApp() {
     using namespace std::placeholders;
+    // Icy notes
+    // worker nodes is added
+    //
     slicer_ = std::bind(&KVWorker<Val>::DefaultSlicer, this, _1, _2, _3);
     obj_ = new Customer(app_id, customer_id, std::bind(&KVWorker<Val>::Process, this, _1));
   }
@@ -295,6 +298,9 @@ class KVServer : public SimpleApp {
    */
   explicit KVServer(int app_id) : SimpleApp() {
     using namespace std::placeholders;
+    // Icy notes
+    // Server customer is added to the customers_ in the Postoffice.h
+    // Process is the recv handle for server customer
     obj_ = new Customer(app_id, app_id, std::bind(&KVServer<Val>::Process, this, _1));
   }
 
@@ -361,6 +367,9 @@ struct KVServerDefaultHandle {
 ///////////////////////////////////////////////////////////////////////////////
 
 template <typename Val>
+// Icy notes
+// KVMeta is set here and request_handle is set in kv_store_dist.h
+// Based on the actual message detail, commandHandle or dataHandle is called
 void KVServer<Val>::Process(const Message& msg) {
   if (msg.meta.simple_app) {
     SimpleApp::Process(msg); return;

@@ -10,6 +10,9 @@ const int Meta::kEmpty = std::numeric_limits<int>::max();
 
 Customer::Customer(int app_id, int customer_id, const Customer::RecvHandle& recv_handle)
     : app_id_(app_id), customer_id_(customer_id), recv_handle_(recv_handle) {
+  //Icy notes
+  //Server and worker nodes are being added through this 
+  //check kv_app.h for two function (server, worker)
   Postoffice::Get()->AddCustomer(this);
   std::cout<<"3rdparty->ps-lite->src->customer.cc: line 14"<<std::endl;
   std::cout<<"TEST: Add Customer is called, check if all the nodes call this"<<std::endl;
@@ -23,7 +26,11 @@ Customer::~Customer() {
   recv_queue_.Push(msg);
   recv_thread_->join();
 }
-
+//Icy notes
+// Given the recverID (could be a node or a group)
+// Get the number of nodes under the group 
+// Set the expected response No for this request --> num
+// And the current response No --> 0
 int Customer::NewRequest(int recver) {
   std::lock_guard<std::mutex> lk(tracker_mu_);
   int num = Postoffice::Get()->GetNodeIDs(recver).size();
@@ -51,6 +58,8 @@ void Customer::AddResponse(int timestamp, int num) {
 void Customer::Receiving() {
   while (true) {
     Message recv;
+    std::cout<<"3rdparty->ps-lite->src->customer.cc: line 61"<<std::endl;
+    std::cout<<"TEST: customer receiving meesge"<<std::endl;
     recv_queue_.WaitAndPop(&recv);
     if (!recv.meta.control.empty() &&
         recv.meta.control.cmd == Control::TERMINATE) {

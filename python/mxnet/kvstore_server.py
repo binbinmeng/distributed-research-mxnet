@@ -74,32 +74,27 @@ class KVStoreServer(object):
         ...     else if is_key_value x: updater(x)
         """
         _ctrl_proto = ctypes.CFUNCTYPE(None, ctypes.c_int, ctypes.c_char_p, ctypes.c_void_p)
+        # Icy notes
+        # self._controller() is passed in to set optimizer later
         check_call(_LIB.MXKVStoreRunServer(self.handle, _ctrl_proto(self._controller()), None))
 
 def _init_kvstore_server_module():
     """Start server/scheduler."""
     is_worker = ctypes.c_int()
     check_call(_LIB.MXKVStoreIsWorkerNode(ctypes.byref(is_worker)))
-    print('python->mxnet->kvstore_server.py: line 79')
-    print("is_worker")
-    print(is_worker)
-    is_server = ctypes.c_int()
-    check_call(_LIB.MXKVStoreIsServerNode(ctypes.byref(is_server)))
-    is_scheduler = ctypes.c_int()
-    check_call(_LIB.MXKVStoreIsSchedulerNode(ctypes.byref(is_scheduler)))
-    if is_server.value != 0:
-        print('TEST: server node')
-    if is_scheduler.value != 0:
-        print('TEST: scheduler node')
+    # Only servers and scheduler will go into the following if statement 
     if is_worker.value == 0:
         print('only scheduler and server should show this line')
         kvstore = create('dist')
         print('kvstore is created and start to create server')
         server = KVStoreServer(kvstore)
         print('server is configured and start to run')
+        # Server customer is added through here
         server.run()
         sys.exit()
 
+#Icy notes
+#Everything starts here
 _init_kvstore_server_module()
 print('python->mxnet->kvstore_server.py: line 100')
 print('TEST: only workers will show this line')

@@ -154,10 +154,16 @@ class KVStoreDistServer {
   KVStoreDistServer() {
     using namespace std::placeholders;
     ps_server_ = new ps::KVServer<char>(0);
+    // Icy notes
+    // KVServer extends SimpleApp
+    // As SimpleApp, request_handle is used to process command 
+    // As KVServer, request_handle is used to process data 
     static_cast<ps::SimpleApp*>(ps_server_)->set_request_handle(
         std::bind(&KVStoreDistServer::CommandHandle, this, _1, _2));
     ps_server_->set_request_handle(
         std::bind(&KVStoreDistServer::DataHandleEx, this, _1, _2, _3));
+    // Icy notes
+    // sync_mode is initialize to false
     sync_mode_ = false;
     gradient_compression_ = std::make_shared<GradientCompression>();
     log_verbose_ = dmlc::GetEnv("MXNET_KVSTORE_DIST_ROW_SPARSE_VERBOSE", false);
