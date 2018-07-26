@@ -87,6 +87,8 @@ void Postoffice::Start(int customer_id, const char* argv0, const bool do_barrier
 }
 
 void Postoffice::Finalize(const int customer_id, const bool do_barrier) {
+  std::cout<<"3rdparty->ps-lite->src->postoffice.cc: line 90"<<std::endl;
+  std::cout<<"TEST: scheduler should print this line after all things have completed"<<std::endl;
   if (do_barrier) Barrier(customer_id, kWorkerGroup + kServerGroup + kScheduler);
   if (customer_id == 0) {
     num_workers_ = 0;
