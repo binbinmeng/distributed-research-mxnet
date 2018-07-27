@@ -151,8 +151,12 @@ class KVStore(object):
         """
         ckeys, cvals, use_str_keys = _ctype_key_value(key, value)
         if use_str_keys:
+            print('mxnet->python->kvstore.py: line 154')
+            print('TEST: use string keys')
             check_call(_LIB.MXKVStoreInitEx(self.handle, mx_uint(len(ckeys)), ckeys, cvals))
         else:
+            print('mxnet->python->kvstore.py: line 154')
+            print('TEST: not use string keys')
             check_call(_LIB.MXKVStoreInit(self.handle, mx_uint(len(ckeys)), ckeys, cvals))
 
     def push(self, key, value, priority=0):
