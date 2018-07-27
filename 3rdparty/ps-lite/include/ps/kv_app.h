@@ -413,6 +413,8 @@ void KVServer<Val>::Response(const KVMeta& req, const KVPairs<Val>& res) {
       msg.AddData(res.lens);
     }
   }
+  std::cout<<"3rdparty->ps-lite->include->ps->kv_app.h: line 416"<<std::endl;
+  std::cout<<"TEST: server push msg"<<msg.DebugStr()<<std::endl;
   Postoffice::Get()->van()->Send(msg);
 }
 
