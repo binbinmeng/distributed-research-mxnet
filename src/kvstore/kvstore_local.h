@@ -61,6 +61,8 @@ class KVStoreLocal : public KVStore {
       std::cout<<"TEST: comm device is create"<<std::endl;
     } else {
       comm_ = new CommCPU();
+      std::cout<<"src->kvstore->kvstore_local.h: line 64"<<std::endl;
+      std::cout<<"TEST: comm cpu is create"<<std::endl;
     }
     pinned_ctx_ = comm_->pinned_ctx();
     gradient_compression_ = std::make_shared<GradientCompression>();

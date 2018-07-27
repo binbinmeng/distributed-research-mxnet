@@ -59,7 +59,7 @@ void Customer::Receiving() {
   while (true) {
     Message recv;
     // std::cout<<"3rdparty->ps-lite->src->customer.cc: line 61"<<std::endl;
-    std::cout<<"TEST: customer receiving meesge"<<std::endl;
+    // std::cout<<"TEST: customer receiving meesge"<<std::endl;
     recv_queue_.WaitAndPop(&recv);
     if (!recv.meta.control.empty() &&
         recv.meta.control.cmd == Control::TERMINATE) {
