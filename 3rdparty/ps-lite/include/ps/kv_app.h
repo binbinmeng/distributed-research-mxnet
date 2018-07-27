@@ -481,8 +481,6 @@ void KVWorker<Val>::Send(int timestamp, bool push, int cmd, const KVPairs<Val>& 
 
   // need to add response first, since it will not always trigger the callback
   int skipped = 0;
-  std::cout<<"3rdparty->ps-lite->include->s->kv_app.h: line 484"<<std::endl;
-  std::cout<<"TEST: sliced.size()= "<<sliced.size()<<std::endl;
   for (size_t i = 0; i < sliced.size(); ++i) {
     if (!sliced[i].first) ++skipped;
   }
@@ -490,7 +488,8 @@ void KVWorker<Val>::Send(int timestamp, bool push, int cmd, const KVPairs<Val>& 
   if ((size_t)skipped == sliced.size()) {
     RunCallback(timestamp);
   }
-
+  std::cout<<"3rdparty->ps-lite->include->s->kv_app.h: line 484"<<std::endl;
+  std::cout<<"TEST: sliced.size()= "<<sliced.size()<<std::endl;
   for (size_t i = 0; i < sliced.size(); ++i) {
     const auto& s = sliced[i];
     if (!s.first) continue;
