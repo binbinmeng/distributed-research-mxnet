@@ -57,6 +57,8 @@ class KVStoreLocal : public KVStore {
   explicit KVStoreLocal(bool use_device_comm) : KVStore() {
     if (use_device_comm) {
       comm_ = new CommDevice();
+      std::cout<<"src->kvstore->kvstore_local.h: line 60"<<std::endl;
+      std::cout<<"TEST: comm device is create"<<std::endl;
     } else {
       comm_ = new CommCPU();
     }

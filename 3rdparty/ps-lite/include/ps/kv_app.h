@@ -508,11 +508,11 @@ void KVWorker<Val>::Send(int timestamp, bool push, int cmd, const KVPairs<Val>& 
       if (kvs.lens.size()) {
         msg.AddData(kvs.lens);
       }
-      std::cout<<"3rdparty->ps-lite->include->s->kv_app.h: line 511"<<std::endl;
-      std::cout<<"TEST: add data->kvs.vals: "<<DebugStr(kvs.vals.data(), kvs.vals.size())<<std::endl;      
+      //std::cout<<"3rdparty->ps-lite->include->s->kv_app.h: line 511"<<std::endl;
+      //std::cout<<"TEST: add data->kvs.vals: "<<DebugStr(kvs.vals.data(), kvs.vals.size())<<std::endl;      
     }
-    std::cout<<"3rdparty->ps-lite->include->s->kv_app.h: line 514"<<std::endl;
-    std::cout<<"TEST: KVWorker is sending message"<<std::endl;
+    // std::cout<<"3rdparty->ps-lite->include->s->kv_app.h: line 514"<<std::endl;
+    // std::cout<<"TEST: KVWorker is sending message"<<std::endl;
     Postoffice::Get()->van()->Send(msg);
   }
 }
