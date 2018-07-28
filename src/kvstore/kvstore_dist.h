@@ -224,7 +224,8 @@ class KVStoreDist : public KVStoreLocal {
     std::vector<int> uniq_keys;
     std::vector<std::vector<NDArray*> > grouped_vals;
     GroupKVPairsPull(keys, values, &uniq_keys, &grouped_vals, true);
-
+    std::cout<<"src->kvstore->kvstore_dist.h: line 227"<<std::endl;
+    std::cout<<"TEST: worker pull weights"<<std::endl;
     for (size_t i = 0; i < uniq_keys.size(); ++i) {
       int key = uniq_keys[i];
       // use the same array for merging to guarantee that pull always happens
