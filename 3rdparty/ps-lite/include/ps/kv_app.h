@@ -565,7 +565,7 @@ template <typename Val>
 template <typename C, typename D>
 int KVWorker<Val>::Pull_(
     const SArray<Key>& keys, C* vals, D* lens, int cmd, const Callback& cb) {
-  std::cout<<"3rdparty->ps-lite->include->ps->kv_app.h: line 568"<<std::end;
+  std::cout<<"3rdparty->ps-lite->include->ps->kv_app.h: line 568"<<std::endl;
   std::cout<<"TEST: kvworker is pulling"<<std::endl;
   int ts = obj_->NewRequest(kServerGroup);
   AddCallback(ts, [this, ts, keys, vals, lens, cb]() mutable {
