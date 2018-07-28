@@ -511,6 +511,11 @@ class SGD(Optimizer):
         return momentum
 
     def _update_impl(self, index, weight, grad, state, multi_precision=False):
+        print('python->mxnet->optimizer.py: line 514')
+        print('TEST: weight')
+        print(weight)
+        print('grad')
+        print(grad)
         assert(isinstance(weight, NDArray))
         assert(isinstance(grad, NDArray))
         self._update_count(index)
