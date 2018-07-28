@@ -413,8 +413,8 @@ void KVServer<Val>::Response(const KVMeta& req, const KVPairs<Val>& res) {
       msg.AddData(res.lens);
     }
   }
-  std::cout<<"3rdparty->ps-lite->include->ps->kv_app.h: line 416"<<std::endl;
-  std::cout<<"TEST: server push msg"<<msg.meta.DebugString()<<std::endl;
+  // std::cout<<"3rdparty->ps-lite->include->ps->kv_app.h: line 416"<<std::endl;
+  // std::cout<<"TEST: server push msg"<<msg.meta.DebugString()<<std::endl;
   Postoffice::Get()->van()->Send(msg);
 }
 
@@ -490,8 +490,8 @@ void KVWorker<Val>::Send(int timestamp, bool push, int cmd, const KVPairs<Val>& 
   if ((size_t)skipped == sliced.size()) {
     RunCallback(timestamp);
   }
-  std::cout<<"3rdparty->ps-lite->include->s->kv_app.h: line 484"<<std::endl;
-  std::cout<<"TEST: sliced.size()= "<<sliced.size()<<std::endl;
+  // std::cout<<"3rdparty->ps-lite->include->s->kv_app.h: line 484"<<std::endl;
+  // std::cout<<"TEST: sliced.size()= "<<sliced.size()<<std::endl;
   for (size_t i = 0; i < sliced.size(); ++i) {
     const auto& s = sliced[i];
     if (!s.first) continue;

@@ -923,6 +923,8 @@ int MXKVStorePullWithSparseEx(KVStoreHandle handle,
     v_keys[i] = keys[i];
     v_vals[i] = static_cast<NDArray*>(vals[i]);
   }
+  std::cout<<"src->c_api->c_api.cc: line 926"<<std::endl;
+  std::cout<<"TEST: MXKVStorePullWithSparseEx is called from kvstore.py"<<std::end;
   static_cast<KVStore*>(handle)->Pull(v_keys, v_vals, priority, ignore_sparse);
   API_END();
 }

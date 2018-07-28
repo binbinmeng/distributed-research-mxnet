@@ -305,6 +305,8 @@ class KVStore(object):
         assert(out is not None)
         ckeys, cvals, use_str_keys = _ctype_key_value(key, out)
         if use_str_keys:
+            print('python->mxnet->kvstore.py: line 308')
+            print('TEST: pull is called from model.py')
             check_call(_LIB.MXKVStorePullWithSparseEx(self.handle, mx_uint(len(ckeys)), ckeys,
                                                       cvals, ctypes.c_int(priority),
                                                       ctypes.c_bool(ignore_sparse)))
