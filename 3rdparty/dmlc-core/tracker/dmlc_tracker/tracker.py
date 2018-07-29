@@ -341,6 +341,8 @@ class PSTracker(object):
         """
         Starts the PS scheduler
         """
+        print('3rdparty->dmlc-core->tracker->dmlc_tracker->tracker: line 344')
+        print('TEST: dmlc PSTracker is initiated')
         self.cmd = cmd
         if cmd is None:
             return
@@ -442,6 +444,8 @@ def start_rabit_tracker(args):
     envs = {'DMLC_NUM_WORKER' : args.num_workers,
             'DMLC_NUM_SERVER' : args.num_servers}
     rabit = RabitTracker(hostIP=get_host_ip(args.host_ip), nslave=args.num_workers)
+    print('3rdparty->dmlc-core->tracker->dmlc_tracker->tracker: line 447')
+    print('TEST: dmlc RabbitTracker is initiated')
     envs.update(rabit.slave_envs())
     rabit.start(args.num_workers)
     sys.stdout.write('DMLC_TRACKER_ENV_START\n')
