@@ -381,6 +381,8 @@ def submit(nworker, nserver, fun_submit, hostIP = 'auto', pscmd = None):
     pscmd :
     """
     # get the root node ip
+    print('3rdparty->ps-lite->tracker.py: line 384')
+    print('TEST: jobs are submitted through ps-lite dmlc')
     if hostIP == 'auto':
         hostIP = 'ip'
     if hostIP == 'dns':
