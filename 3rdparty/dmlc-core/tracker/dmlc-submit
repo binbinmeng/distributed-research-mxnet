@@ -6,4 +6,5 @@ sys.path.insert(0, curr_path)
 
 from dmlc_tracker import submit
 
+print('dmlc module is called')
 submit.main()

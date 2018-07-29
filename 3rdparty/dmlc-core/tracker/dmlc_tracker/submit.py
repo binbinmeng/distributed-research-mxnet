@@ -39,7 +39,8 @@ def main():
     """Main submission function."""
     args = opts.get_opts()
     config_logger(args)
-
+    print('3rdparty->dmlc-core->tracker->dmlc_tracker->submit.py: line 42')
+    print('TEST: args.cluster %s'%args.cluster)
     if args.cluster == 'local':
         local.submit(args)
     elif args.cluster == 'sge':
