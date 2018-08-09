@@ -414,6 +414,7 @@ class KVStoreDist : public KVStoreLocal {
   }
 
   void PushDefault(int key, const NDArray &send_buf, const PSKV& pskv, int priority) {
+    std::cout<<"TEST: src/kvstore/kvstore_dist.h: line 417"<<std::endl;
     auto push_to_servers =
         [this, key, pskv, send_buf](RunContext rctx, Engine::CallbackOnComplete cb) {
           const int dtype = send_buf.dtype();
