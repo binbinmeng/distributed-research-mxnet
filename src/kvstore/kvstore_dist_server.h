@@ -651,6 +651,8 @@ class KVStoreDistServer {
         stored.WaitToRead();
       } else {
         auto &updates = update_buf_[key];
+        std::cout<<"TEST: src->kvstore->kvstore_dist_server.h: line: 654"<<std::endl;
+        std::cout<<updates.merged<<std::endl;
         if (sync_mode_ && updates.merged.is_none()) {
           updates.merged = NDArray(dshape, Context(), false,
                                    has_multi_precision_copy(type) ? mshadow::kFloat32 : type.dtype);
