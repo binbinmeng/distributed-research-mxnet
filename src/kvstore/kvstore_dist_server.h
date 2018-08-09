@@ -616,7 +616,6 @@ class KVStoreDistServer {
   void DataHandleDefault(const DataHandleType type, const ps::KVMeta& req_meta,
                          const ps::KVPairs<char> &req_data,
                          ps::KVServer<char>* server) {
-    //std::cout<<"TEST: src->kvstore->kvstore_dist_server.h: line: 619"<<std::endl;
     // do some check
     CHECK_EQ(req_data.keys.size(), (size_t)1);
     if (req_meta.push) {
