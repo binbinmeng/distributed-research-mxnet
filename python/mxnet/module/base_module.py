@@ -517,7 +517,6 @@ class BaseModule(object):
                 data_batch = next_data_batch
                 if monitor is not None:
                     monitor.tic()
-                self.sendSignal(epoch, nbatch, datetime.time(datetime.now()), 'start')
                 self.forward_backward(data_batch)
                 self.update()
 
@@ -547,7 +546,6 @@ class BaseModule(object):
                                                      locals=locals())
                     for callback in _as_list(batch_end_callback):
                         callback(batch_end_params)
-                self.sendSignal(epoch, nbatch, datetime.time(datetime.now()), 'end')
                 nbatch += 1
 
             # one epoch of training is finished
@@ -576,9 +574,6 @@ class BaseModule(object):
 
             # end of 1 epoch, reset the data-iter for another epoch
             train_data.reset()
-
-    def sendSignal(self, epoch, nbatch, time, signalType='start'):
-        raise NotImplementedError()
 
     ################################################################################
     # Symbol information
