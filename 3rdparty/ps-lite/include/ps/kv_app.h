@@ -386,6 +386,8 @@ void KVServer<Val>::Process(const Message& msg) {
     CHECK_GE(n, 2);
     data.keys = msg.data[0];
     data.vals = msg.data[1];
+    std::cout<<"TEST: kvapp.h->line: 389"<<std::endl;
+    std::cout<<data.keys.size()<<std::endl;
     if (n > 2) {
       CHECK_EQ(n, 3);
       data.lens = msg.data[2];
