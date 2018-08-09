@@ -624,7 +624,7 @@ class KVStoreDistServer {
     }
     int key = DecodeKey(req_data.keys[0]);
     auto& stored = has_multi_precision_copy(type) ? store_realt_[key] : store_[key];
-    std::cout<<stored<<std::endl;
+    //std::cout<<stored<<std::endl;
     // there used several WaitToRead, this is because \a recved's memory
     // could be deallocated when this function returns. so we need to make sure
     // the operators with \a NDArray are actually finished
@@ -679,7 +679,7 @@ class KVStoreDistServer {
         }
         updates.request.push_back(req_meta);
         std::cout<<"TEST: src->kvstore->kvstore_dist_server.h: line: 681"<<std::endl;
-        printf(updates.merged);
+        std::cout<< key <<std::endl;
         ApplyUpdates(type, key, &updates, server);
       }
     } else {
