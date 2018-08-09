@@ -679,7 +679,7 @@ class KVStoreDistServer {
         }
         updates.request.push_back(req_meta);
         std::cout<<"TEST: src->kvstore->kvstore_dist_server.h: line: 681"<<std::endl;
-        std::cout<< key <<std::endl;
+        std::cout<< recved <<std::endl;
         ApplyUpdates(type, key, &updates, server);
       }
     } else {
