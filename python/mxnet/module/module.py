@@ -751,6 +751,9 @@ class Module(BaseModule):
                            kvstore=self._kvstore,
                            param_names=self._exec_group.param_names)
 
+    def sendSignal(self, epoch, nbatch, time, signalType='start'):
+        _send_signal(epoch, nbatch, time, signalType)
+
     def get_outputs(self, merge_multi_context=True):
         """Gets outputs of the previous forward computation.
 
